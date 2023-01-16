@@ -38,6 +38,10 @@ h2, h3 {
       height: 40vh;
       width: 100vw;
 
+      .slick-list.slick-track{
+        width: 100vw;
+      }
+
       .np-img {
         height: 100%;
         width: 100% !important;

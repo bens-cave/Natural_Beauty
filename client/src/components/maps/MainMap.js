@@ -17,9 +17,9 @@ const MainMap = () => {
   const map = useRef(null);
   const [ mapObject, setMapObject ] = useState(null)
   // eslint-disable-next-line
-  const [lng, setLng] = useState(-3.9323); //set these to coordinates of centre of park (will have to calculate)
+  const [lng, setLng] = useState(-3.747145); //set these to coordinates of centre of park (will have to calculate)
   // eslint-disable-next-line
-  const [lat, setLat] = useState(54.6165); //same
+  const [lat, setLat] = useState(54.786114); //same
   // eslint-disable-next-line
   const [zoom, setZoom] = useState(5.4); // set to zoom level so that park fills map frame (will have to calculate)
   const { id } = useParams()
@@ -66,7 +66,7 @@ const MainMap = () => {
   
       map.current.fitBounds([
         [5.155268, 59.138968],
-        [-12.647684, 48.730457]
+        [-12.647684, 49.3]
       ])
       map.current.addLayer({
         'id': 'national-parks',
@@ -223,7 +223,7 @@ const MainMap = () => {
     if(!map.current) return
     map.current.fitBounds([
       [5.155268, 59.138968],
-      [-12.647684, 48.730457]
+      [-12.647684, 49.3]
     ])
   }
 

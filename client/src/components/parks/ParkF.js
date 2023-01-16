@@ -41,7 +41,7 @@ const NationalPark = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 8000,
     pauseOnHover: true,
     // initialSlide: 0,
     // prevArrow: <SlickArrowLeft />,
@@ -264,8 +264,8 @@ const NationalPark = () => {
             <div className='np-stuff'>
               <div className='np-activities'>
                 <h4>Wildlife & wild adventures</h4>
-                <p><span>🦌</span> <b>Among the incredible scenery, you'll be able to spot:</b> {park.iconicWildlife.map((item) => `${item}, `)}</p>
-                <p><span>🧗‍♀️</span> <b>In {park.name} you can enjoy a range of outdoor activities including:</b> {park.activities.map((item) => `${item}, `)}</p>
+                <p><span>🦌</span> <b>Among the incredible scenery, you'll be able to spot:</b> {park.iconicWildlife.map(item => item).join(', ')}</p>
+                <p><span>🧗‍♀️</span> <b>In {park.name} you can enjoy a range of outdoor activities including:</b> {park.activities.map(item => item).join(', ')}</p>
                 <p><span>🥾</span> <b>Why not try out some of the well-trodden paths:</b></p>
                 <ul>
                   <li><a href={park.trails[0].link} target='_blank' rel='noreferrer'>{park.trails[0].name}</a></li>
@@ -293,7 +293,7 @@ const NationalPark = () => {
 
                   
 
-                  <button onClick={handleAddToFav}>{favIcon}</button>
+                  {/*<button onClick={handleAddToFav}>{favIcon}</button>*/}
                   <div className='buttons-container'>
                   <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" placeholder="Write a review">
@@ -303,7 +303,7 @@ const NationalPark = () => {
                     <button type="submit" onClick={handleReviewSubmit}>Submit a review</button>
                   </Form>
                     {/* <button className='btn-review'>Submit a review</button> */}
-                    {!userIsAuthenticated() ? <button className='btn-none' onClick={handleLoginButton}>Login to add ❤️</button> : <button className='btn-fav' onClick={handleAddToFav}>{favIcon}</button>}
+                    {!userIsAuthenticated() ? <button className='btn-none' onClick={handleLoginButton}>Login to add ❤️</button> : <button className='btn-fav' onClick={handleAddToFav}>Add to favourites ❤️{favIcon}</button>}
                     
                     {/* <button className='btn-fav' onClick={handleAddToFav}>{favIcon}</button> */}
                   </div>

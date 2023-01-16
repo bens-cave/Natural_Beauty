@@ -9,9 +9,9 @@ const Map = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
   // eslint-disable-next-line
-  const [lng, setLng] = useState(-3.9323);
+  const [lng, setLng] = useState(-3.747145);
   // eslint-disable-next-line
-  const [lat, setLat] = useState(54.6165);
+  const [lat, setLat] = useState(54.786114);
   // eslint-disable-next-line
   const [zoom, setZoom] = useState(4.6);
 

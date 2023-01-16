@@ -72,11 +72,11 @@ const SimpleSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 200,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1000,
     initialSlide: 0,
     prevArrow: <SlickArrowLeft />,
     nextArrow: <SlickArrowRight />,
