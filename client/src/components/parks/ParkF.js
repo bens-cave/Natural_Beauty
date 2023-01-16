@@ -8,12 +8,12 @@ import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/auth'
 // * Import SimpleSlider
 // import SimpleSlider from '../../carousel/carousel'
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+// import Container from 'react-bootstrap/Container'
+// import Row from 'react-bootstrap/Row'
+// import Col from 'react-bootstrap/Col'
 
-import FormControl from 'react-bootstrap/FormControl'
-import InputGroup from 'react-bootstrap/InputGroup'
+// import FormControl from 'react-bootstrap/FormControl'
+// import InputGroup from 'react-bootstrap/InputGroup'
 import Form from 'react-bootstrap/Form'
 
 // React-slick-carousel imports
@@ -70,17 +70,21 @@ const NationalPark = () => {
   const [park, setPark] = useState(null)
   const [errors, setErrors] = useState(false)
 
+  // ? States for added OR not added to favourites
+  const [notSaved, setNotSaved] = useState('Add to favourites ❤️')
+  const [saved, setSaved] = useState('Remove from favourites 💚')
+
+  // ? State for button & icon
+  const [favIcon, setFavIcon] = useState('')
+
   useEffect(() => {
-    console.log('HELLO??')
     const getPark = async () => {
       try {
         const { data } = await axios.get(`/api/parks/${id}`)
-        console.log(data.name)
-        // console.log('Park data from get -> ', data)
+        console.log('data.name --> ', data.name)
         setPark(data)
-        console.log('park data->', park)
+        console.log('park data->', data)
         console.log(park.parkImg[0])
-
         let array = []
         data.favourites.f()
         array.includes(true) ? setFavIcon(saved) : setFavIcon(notSaved)
@@ -91,16 +95,7 @@ const NationalPark = () => {
       }
     }
     getPark()
-
-
   }, [id])
-
-  // ? Sates for added OR not added to favourites
-  const [notSaved, setNotSaved] = useState('Add to favourites ❤️')
-  const [saved, setSaved] = useState('Remove from favourites 💚')
-
-  // ? State for button & icon
-  const [favIcon, setFavIcon] = useState('')
 
   // Check if park has been favourited aready
   useEffect(() => {
@@ -143,14 +138,16 @@ const NationalPark = () => {
         },
       })
       console.log('add to fav response ->', data)
-
       let array = []
+      console.log('data -->', data)
+      console.log('parkId -->', park.parkId)
       data.favourites.forEach(park => {
-
         if (park.parkId === id) {
           array.push(true)
+          console.log('array.push(true)')
         } else {
           array.push(false)
+          console.log('array.push(false)')
         }
         console.log('array ->', array)
       })
@@ -178,7 +175,7 @@ const NationalPark = () => {
     console.log(submitData)
   }
 
-  // ? Funtion to submit a review
+  // ? Function to submit a review
   const handleReviewSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -204,8 +201,10 @@ const NationalPark = () => {
   return (
     <>
       {park ?
+
         <section className='np-page-container'>
           <section className='np-carousel-container'>
+
             <Slider {...settings} >
               <img src={park.parkImg[0]} alt={park.name} className='np-img' />
               <img src={park.parkImg[1]} alt={park.name} className='np-img' />
@@ -219,7 +218,8 @@ const NationalPark = () => {
             </div>
           </section>
           <section className='np-bottom-container'>
-            {/* <SimpleSlider /> */}
+            
+
             <div className='np-attractions'>
               <Slider {...settingsAttractions} className="slider" >
                 <div className='np-attraction'>
@@ -261,6 +261,7 @@ const NationalPark = () => {
               </Slider>
             </div>
 
+
             <div className='np-stuff'>
               <div className='np-activities'>
                 <h4>Wildlife & wild adventures</h4>
@@ -291,9 +292,6 @@ const NationalPark = () => {
                     </p>
                   </div>
 
-                  
-
-                  {/*<button onClick={handleAddToFav}>{favIcon}</button>*/}
                   <div className='buttons-container'>
                   <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" placeholder="Write a review">
@@ -302,10 +300,7 @@ const NationalPark = () => {
                     </Form.Group>
                     <button type="submit" onClick={handleReviewSubmit}>Submit a review</button>
                   </Form>
-                    {/* <button className='btn-review'>Submit a review</button> */}
-                    {!userIsAuthenticated() ? <button className='btn-none' onClick={handleLoginButton}>Login to add ❤️</button> : <button className='btn-fav' onClick={handleAddToFav}>Add to favourites ❤️{favIcon}</button>}
-                    
-                    {/* <button className='btn-fav' onClick={handleAddToFav}>{favIcon}</button> */}
+                    {!userIsAuthenticated() ? <button className='btn-none' onClick={handleLoginButton}>Login to add ❤️</button> : <button className='btn-fav' onClick={handleAddToFav}>{favIcon}</button>}
                   </div>
                 </div>
 
@@ -321,27 +316,4 @@ const NationalPark = () => {
   )
 
 }
-
-
-// const imageCarousel = [
-//   {
-//     original: park.parkImg[0],
-//     thumbnail: park.parkImg[0]
-//   },
-//   {
-//     original: park.parkImg[1],
-//     thumbnail: park.parkImg[1]
-//   },
-//   {
-//     original: park.parkImg[1],
-//     thumbnail: park.parkImg[1]
-//   }
-// ]
-
-// class MyGallery extends React.Component{
-//   render() {
-//     return <ImageGallery items={imageCarousel} />
-//   }
-// }
-
 export default NationalPark

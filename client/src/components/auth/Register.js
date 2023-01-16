@@ -17,7 +17,12 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    favourites: [{
+      parkId: "",
+      name:  "",
+      image: ""
+    }]
   })
 
   // Errors

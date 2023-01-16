@@ -63,6 +63,7 @@ export const addFavourite = async (req, res) => {
         console.log('updated favourites ->', profile.favourites)
       } else {
         profile.favourites.push(newObject)
+        console.log('added to favourites ->', profile.favourites)
       } 
     })
 
