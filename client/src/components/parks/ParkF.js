@@ -84,10 +84,15 @@ const NationalPark = () => {
         console.log('data.name --> ', data.name)
         setPark(data)
         console.log('park data->', data)
-        console.log(park.parkImg[0])
         let array = []
         data.favourites.f()
-        array.includes(true) ? setFavIcon(saved) : setFavIcon(notSaved)
+        if (array.includes(true)) {
+          setFavIcon(saved) 
+          setSaved()
+        } else {
+          setFavIcon(notSaved)
+          setNotSaved()
+        } 
 
       } catch (error) {
         console.log('🧭 There was a problem finding your park ->', error)
@@ -95,7 +100,7 @@ const NationalPark = () => {
       }
     }
     getPark()
-  }, [id])
+  }, [id, saved, notSaved])
 
   // Check if park has been favourited aready
   useEffect(() => {
@@ -124,7 +129,7 @@ const NationalPark = () => {
       }
     }
     getProfileFav()
-  }, [id, favIcon])
+  }, [id, favIcon, saved, notSaved])
 
   // ? Function to add Park to user favourites
   const handleAddToFav = async (e) => {

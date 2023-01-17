@@ -53,19 +53,23 @@ export const addFavourite = async (req, res) => {
     const newObject = { parkId: parkId, name: parkToAdd.name, image: parkToAdd.parkImg[0] }
     console.log('newObject ->', newObject)
 
+    if (!profile.favourites.parkId) {
+      profile.favourites.push(newObject)
+      console.log('added to favourites ->', profile.favourites)
+    } else {
+      profile.favourites.forEach(favPark => {
+        if (favPark.parkId === newObject.parkId) {
+          const filteredParks = profile.favourites.filter(favPark => favPark.parkId !== newObject.parkId)
+          console.log('filteredParks ->', filteredParks)
 
-    profile.favourites.forEach(favPark => {
-      if (favPark.parkId === newObject.parkId) {
-        const filteredParks = profile.favourites.filter(favPark => favPark.parkId !== newObject.parkId)
-        console.log('filteredParks ->', filteredParks)
-
-        profile.favourites = filteredParks
-        console.log('updated favourites ->', profile.favourites)
-      } else {
-        profile.favourites.push(newObject)
-        console.log('added to favourites ->', profile.favourites)
-      } 
-    })
+          profile.favourites = filteredParks
+          console.log('updated favourites ->', profile.favourites)
+        } else {
+          profile.favourites.push(newObject)
+          console.log('added to favourites ->', profile.favourites)
+        } 
+      })
+    }
 
 
     // profile.favourites.push(newObject)

@@ -3,34 +3,19 @@ const userData = [
     username: "el",
     email: "el@email.com",
     password: "pass",
-    passwordConfirmation: "pass",
-    favourites: [{
-      parkId: "",
-      name:  "",
-      image: ""
-    }]
+    passwordConfirmation: "pass"
   },
   {
     username: "fran",
     email: "fran@email.com",
     password: "pass",
-    passwordConfirmation: "pass",
-    favourites: [{
-      parkId: "",
-      name:  "",
-      image: ""
-    }]
+    passwordConfirmation: "pass"
   },
   {
     username: "ben",
     email: "ben@email.com",
     password: "pass",
-    passwordConfirmation: "pass",
-    favourites: [{
-      parkId: "",
-      name:  "",
-      image: ""
-    }]
+    passwordConfirmation: "pass"
   }
 ]
 

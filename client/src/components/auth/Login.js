@@ -58,7 +58,7 @@ const Login = () => {
     <section className="form-page">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
-          <p>Continue your journey...</p>
+          <p>Continue your journey...or start it by registering up top</p>
           {/* Email */}
           <input type="text" name="email" placeholder="Email" aria-label="Email" required value={formData.email} onChange={handleChange} />
           {/* Password */}

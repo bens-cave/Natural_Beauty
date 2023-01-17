@@ -49,25 +49,29 @@ const ProfilePage = () => {
           <Row lg="2" md="2" sm="2">
             {user ?
               <>
-                {user.favourites.map((item) => {
-                  const { parkId, image, name } = item
-                  return (
-                    <Col key={parkId} lg="4" md="6" sm="12">
-                      <Link to={`/parks/${parkId}`}>
-                        <Card className="shadow-sm m-2">
-                          <Card.Img src={image} />
-                          <Card.Body>
-                            <span className="h6">{name}</span>
-                          </Card.Body>
-                        </Card>
-                      </Link>
-                    </Col>
-                  )
-                })}
+                {user.favourites.parkId !== '' ?
+                <>
+                  {user.favourites.map((item) => {
+                    const { parkId, image, name } = item
+                    return (
+                      <Col key={parkId} lg="4" md="6" sm="12">
+                        <Link to={`/parks/${parkId}`}>
+                          <Card className="shadow-sm m-2">
+                            <Card.Img src={image} />
+                            <Card.Body>
+                              <span className="h6">{name}</span>
+                            </Card.Body>
+                          </Card>
+                        </Link>
+                      </Col>
+                    )
+                  })}
+                </>
+                : <p>You don't have any favourites yet</p>}
               </>
               :
               <>
-                {errors ? <p>Not available</p> : <p>Loading...</p>}
+                {errors ? <p>Please register to get a profile page</p> : <p>Not available</p>}
               </>
             }
           </Row>
