@@ -47,33 +47,36 @@ export const addFavourite = async (req, res) => {
     console.log('profile ->', profile)
     console.log('parkToAdd ->', parkToAdd._id.toString())
     // Change the ObjectId to a string
-    const parkId = parkToAdd._id.toString()
+    const targetParkId = parkToAdd._id.toString()
     console.log('current profile favourites ->', profile.favourites)
 
-    const newObject = { parkId: parkId, name: parkToAdd.name, image: parkToAdd.parkImg[0] }
+    const newObject = { parkId: targetParkId, name: parkToAdd.name, image: parkToAdd.parkImg[0] }
     console.log('newObject ->', newObject)
 
     // If user favourites array is empty, add the park (newObject)
     if (!profile.favourites.length) {
       profile.favourites.push(newObject)
-      console.log('added to favourites ->', profile.favourites)
+      console.log(`created favourites and added ${newObject.name} -> ${profile.favourites}`)
+
+    // ? duplication of favourites problem with the below RESOLVED
     } else {
-      profile.favourites.forEach(favPark => {
-        if (favPark.parkId === newObject.parkId) {
-          const filteredParks = profile.favourites.filter(favPark => favPark.parkId !== newObject.parkId)
-          console.log('filteredParks ->', filteredParks)
-
-          profile.favourites = filteredParks
-          console.log('updated favourites ->', profile.favourites)
-        } else {
-          profile.favourites.push(newObject)
-          console.log('added to favourites ->', profile.favourites)
-        } 
+      let array1 = []
+      profile.favourites.forEach(item => {
+        array1.push(item.parkId)
       })
+      console.log('array1', array1)
+      const alreadyFavourited = array1.includes(newObject.parkId)
+      console.log('alreadyFavourited ->', alreadyFavourited)
+      if (alreadyFavourited) {
+        const filteredParks = profile.favourites.filter(favPark => favPark.parkId !== newObject.parkId)
+        console.log('filteredParks ->', filteredParks)
+        profile.favourites = filteredParks
+        console.log('updated favourites ->', profile.favourites)
+      } else {
+        profile.favourites.push(newObject)
+        console.log('added to favourites ->', profile.favourites)
+      } 
     }
-
-
-    // profile.favourites.push(newObject)
 
     // console.log('prof fav ->', profile.favourites[currentChoiceIndex])
     // // Stop user from adding multiple of the same IDs
