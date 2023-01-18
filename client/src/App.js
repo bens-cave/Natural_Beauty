@@ -16,7 +16,6 @@ import ParksIndex from './components/parks/ParksIndex'
 import NationalPark from './components/parks/ParkF'
 import NavBarPage from './components/common/NavBarPage'
 import ProfilePage from './ProfilePage'
-import FruitShow from './components/likestest/FruitShow'
 import SimpleSlider from './carousel/carousel'
 
 const App = () => {
@@ -50,9 +49,6 @@ const App = () => {
           <Route path="/maptest" element={<Map />} />
           {/* <Route path="/park" element={<Park />} /> */}
           <Route path="/mainmaptest" element={<MainMap />} />
-
-        {/* ! Testing ! */}
-        <Route path="/fruitshow/:id" element={<FruitShow />} />
 
           {/* Parks pages */}
           <Route path="/parks" element={<ParksIndex />} />

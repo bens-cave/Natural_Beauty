@@ -71,9 +71,9 @@ const ParksIndex = () => {
     <Container className='parks-container'>
       <Row className="justify-content-center">
         {parks.map(park => {
-          const { name, _id, parkImg, keyWildlife, activities } = park
+          const { _id, name, parkImg, keyWildlife, activities } = park
           return (
-            <Col key={_id} md='6' lg='4' className='park'>
+            <Col key={_id} md='6' lsg='4' className='park'>
               <Link to={`/parks/${_id}`}>
                 <Card>
                   <Slider {...settings} >

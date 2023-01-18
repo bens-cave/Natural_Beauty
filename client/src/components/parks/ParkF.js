@@ -123,7 +123,7 @@ const NationalPark = () => {
       }
     }
     getProfileFav()
-  }, [id, favIcon])
+  }, [id, favIcon, saved, notSaved])
 
   // ? Function to add Park to user favourites
   const handleAddToFav = async (e) => {
@@ -309,7 +309,7 @@ const NationalPark = () => {
           </section>
         </section>
         :
-        <p>Something went wrong</p>
+        <p>Loading...</p>
       }
     </>
   )
