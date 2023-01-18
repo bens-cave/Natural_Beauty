@@ -60,12 +60,12 @@ export const addFavourite = async (req, res) => {
 
     // ? duplication of favourites problem with the below RESOLVED
     } else {
-      let array1 = []
+      let favParkIds = []
       profile.favourites.forEach(item => {
-        array1.push(item.parkId)
+        favParkIds.push(item.parkId)
       })
-      console.log('array1', array1)
-      const alreadyFavourited = array1.includes(newObject.parkId)
+      console.log('favParkIds', favParkIds)
+      const alreadyFavourited = favParkIds.includes(newObject.parkId)
       console.log('alreadyFavourited ->', alreadyFavourited)
       if (alreadyFavourited) {
         const filteredParks = profile.favourites.filter(favPark => favPark.parkId !== newObject.parkId)
