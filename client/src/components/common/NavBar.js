@@ -5,19 +5,17 @@ import { useNavigate, Link } from 'react-router-dom'
 // Import authentication
 import { userIsAuthenticated } from '../helpers/auth'
 
-const NavBarPage = () => {
+const NavBar = () => {
 
   const navigate = useNavigate()
 
-  // Funtion to remove token and navigate to login page
+  // Function to remove token and navigate to login page
   const handleLogout = () => {
     // Remove token from local storage
     window.localStorage.removeItem('natural-beauty')
     // Navigate to login page
     navigate('/login')
   }
-
-
 
   return (
     <header>
@@ -27,11 +25,6 @@ const NavBarPage = () => {
         </div>
         <div className="nav-right">
           <Link to="/parks">National Parks</Link>
-          {/* <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
-          <Link onClick={handleLogout} to="">Logout</Link> */}
-          {/* <Link to="/parkmaptest">Map of National Parks</Link>
-          <Link to="/parks">Index</Link> */}
           {/* Change links displayed depending on if user is logged in or not */}
           {userIsAuthenticated() ?
             <>
@@ -50,4 +43,5 @@ const NavBarPage = () => {
   )
 }
 
-export default NavBarPage
+
+export default NavBar

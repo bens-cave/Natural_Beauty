@@ -58,20 +58,24 @@ export const addFavourite = async (req, res) => {
       profile.favourites.push(newObject)
       console.log(`created favourites and added ${newObject.name} -> ${profile.favourites}`)
 
-    // ? duplication of favourites problem with the below RESOLVED
+    // If favourites is not empty, check if park is already favourited
     } else {
+      // Create temp array of favourited park Ids
       let favParkIds = []
       profile.favourites.forEach(item => {
         favParkIds.push(item.parkId)
       })
       console.log('favParkIds', favParkIds)
+      // Boolean variable created for if park already favourited
       const alreadyFavourited = favParkIds.includes(newObject.parkId)
       console.log('alreadyFavourited ->', alreadyFavourited)
+      // If already favourited, filter all other parks from favourited and overwrite favourites to remove already favourited target
       if (alreadyFavourited) {
         const filteredParks = profile.favourites.filter(favPark => favPark.parkId !== newObject.parkId)
         console.log('filteredParks ->', filteredParks)
         profile.favourites = filteredParks
         console.log('updated favourites ->', profile.favourites)
+      // If not already favourited, add target park to favourites
       } else {
         profile.favourites.push(newObject)
         console.log('added to favourites ->', profile.favourites)
