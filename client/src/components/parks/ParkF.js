@@ -71,8 +71,8 @@ const NationalPark = () => {
   const [errors, setErrors] = useState(false)
 
   // ? States for added OR not added to favourites
-  const [notSaved, setNotSaved] = useState('Add to favourites ❤️')
-  const [saved, setSaved] = useState('Remove from favourites 💚')
+  const [notSaved] = useState('Add to favourites ❤️')
+  const [saved] = useState('Remove from favourites 💚')
 
   // ? State for button & icon
   const [favIcon, setFavIcon] = useState('')
@@ -85,14 +85,8 @@ const NationalPark = () => {
         setPark(data)
         console.log('park data->', data)
         let array = []
-        data.favourites.f()
-        if (array.includes(true)) {
-          setFavIcon(saved) 
-          setSaved()
-        } else {
-          setFavIcon(notSaved)
-          setNotSaved()
-        } 
+        // data.favourites.f()
+        array.includes(true) ? setFavIcon(saved) : setFavIcon(notSaved)
 
       } catch (error) {
         console.log('🧭 There was a problem finding your park ->', error)
@@ -100,7 +94,7 @@ const NationalPark = () => {
       }
     }
     getPark()
-  }, [id, saved, notSaved])
+  }, [id])
 
   // Check if park has been favourited aready
   useEffect(() => {
@@ -129,7 +123,7 @@ const NationalPark = () => {
       }
     }
     getProfileFav()
-  }, [id, favIcon, saved, notSaved])
+  }, [id, favIcon])
 
   // ? Function to add Park to user favourites
   const handleAddToFav = async (e) => {

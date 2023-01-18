@@ -49,7 +49,7 @@ const ProfilePage = () => {
           <Row lg="2" md="2" sm="2">
             {user ?
               <>
-                {user.favourites.parkId !== '' ?
+                {user.favourites.length ?
                 <>
                   {user.favourites.map((item) => {
                     const { parkId, image, name } = item
@@ -82,7 +82,6 @@ const ProfilePage = () => {
               <Row lg="1" md="1" sm="1">
                 <Col>
                   <Card className="shadow-sm">
-                    {/* <Card.Img src={'/'} alt="Profile Pic" /> */}
                     <Card.Body>
                       <h3>User Info</h3>
                       <hr />

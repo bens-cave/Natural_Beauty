@@ -53,7 +53,8 @@ export const addFavourite = async (req, res) => {
     const newObject = { parkId: parkId, name: parkToAdd.name, image: parkToAdd.parkImg[0] }
     console.log('newObject ->', newObject)
 
-    if (!profile.favourites.parkId) {
+    // If user favourites array is empty, add the park (newObject)
+    if (!profile.favourites.length) {
       profile.favourites.push(newObject)
       console.log('added to favourites ->', profile.favourites)
     } else {
