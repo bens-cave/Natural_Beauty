@@ -11,7 +11,7 @@ export const secureRoute = async (req, res, next) => {
     // ^ Check to see if an authorisation header exists 
 
     const token = req.headers.authorization.replace('Bearer ', '')
-    // ^ this removes 'Bearer ' from the beginning of the tokenm which allows straightforward decoding for comparison
+    // ^ this removes 'Bearer ' from the beginning of the token which allows straightforward decoding for comparison
     console.log('secureRoute token ->', token)
 
     const payload = jwt.verify(token, SECRET)
@@ -19,7 +19,7 @@ export const secureRoute = async (req, res, next) => {
     console.log('secureRoute payload ->', payload)
 
     const userToVerify = await User.findById(payload.sub)
-    // ^ check the user exists by ssearching for them using the paylload.sub (which should match the user id)
+    // ^ check the user exists by searching for them using the payload.sub (which should match the user id)
     // if they don't exist then throw error
     if (!userToVerify) throw new Error('User not found')
 
