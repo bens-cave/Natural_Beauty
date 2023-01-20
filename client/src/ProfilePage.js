@@ -36,7 +36,7 @@ const ProfilePage = () => {
     }
     getUser()
     console.log('useEffect running ->', user)
-  }, [])
+  })
 
   console.log('3 user ->', user)
 
