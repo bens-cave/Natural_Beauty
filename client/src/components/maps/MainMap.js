@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 import axios from 'axios'
 
 import { useNavigate, useParams } from 'react-router-dom'
