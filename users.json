@@ -1,0 +1,23 @@
+[
+  {
+  "username": "el",
+  "email": "el@email.com",
+  "password": "pass",
+  "passwordConfirmation": "pass",
+  "favourites": []
+  },
+  {
+    "username": "fran",
+    "email": "fran@email.com",
+    "password": "pass",
+    "passwordConfirmation": "pass",
+    "favourites": []
+  },
+  {
+    "username": "ben",
+    "email": "ben@email.com",
+    "password": "pass",
+    "passwordConfirmation": "pass",
+    "favourites": []
+  }
+]
