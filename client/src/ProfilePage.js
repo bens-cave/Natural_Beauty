@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'
 const ProfilePage = () => {
 
   // Get logged in user object
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState()
 
   const [errors, setErrors] = useState(false)
 
@@ -36,7 +36,7 @@ const ProfilePage = () => {
     }
     getUser()
     console.log('useEffect running ->', user)
-  })
+  },[])
 
   console.log('3 user ->', user)
 

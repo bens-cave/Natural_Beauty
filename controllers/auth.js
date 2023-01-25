@@ -1,6 +1,11 @@
+import dotenv from "dotenv"
+dotenv.config()
 import User from '../models/users.js'
 import jwt from 'jsonwebtoken'
-import { SECRET } from '../config/environment.js'
+// import { SECRET } from '../config/environment.js'
+
+
+const SECRET = process.env.SECRET
 
 // METHOD: POST
 // Endpoint: /register

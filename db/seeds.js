@@ -1,6 +1,6 @@
+import dotenv from "dotenv"
+dotenv.config()
 import mongoose from 'mongoose'
-
-import { MONGODB_CONNECTION_STRING } from '../config/environment.js'
 
 // Import national park model
 import Park from '../models/parks.js'
@@ -10,10 +10,12 @@ import User from '../models/users.js'
 import parkData from './data/parksRec.js'
 import userData from './data/users.js'
 
+const MONGODB_CONN_STRING = process.env.MONGODB_CONNECTION_STRING
+
 const seedDatabase = async () => {
   try {
     // Connect to database
-    await mongoose.connect(MONGODB_CONNECTION_STRING)
+    await mongoose.connect(MONGODB_CONN_STRING)
     console.log(`🚀 Database connected`)
 
     // Remove data

@@ -1,8 +1,15 @@
+import dotenv from "dotenv"
+dotenv.config()
 import express from 'express'
 import mongoose from 'mongoose'
 
 // Import environment
-import { PORT, MONGODB_CONNECTION_STRING } from './config/environment.js'
+// import { PORT, MONGODB_CONNECTION_STRING } from './config/environment.js'
+
+
+const MONGODB_CONN_STRING = process.env.MONGODB_CONNECTION_STRING
+const PORT = process.env.PORT
+
 // import { getSinglePark, showParks } from './controllers/parks.js'
 
 // Import model
@@ -35,7 +42,7 @@ const startServer = async () => {
   app.use('/api', router)
 
   // Connect to database with mongoose
-  await mongoose.connect(MONGODB_CONNECTION_STRING)
+  await mongoose.connect(MONGODB_CONN_STRING)
   console.log('Connected to MongoDB!')
 
   // ! for deployment to render.com
@@ -51,4 +58,3 @@ const startServer = async () => {
 }
 
 startServer()
-
