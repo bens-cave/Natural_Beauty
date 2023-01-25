@@ -38,6 +38,15 @@ const startServer = async () => {
   await mongoose.connect(MONGODB_CONNECTION_STRING)
   console.log('Connected to MongoDB!')
 
+  // ! for deployment to render.com
+  if (process.env.NODE_ENV === 'production') {
+    //* Set static folder
+    app.use(express.static('client/build'));
+  // !
+    
+    app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
+  }
+
   app.listen(PORT, () => console.log(`🏔  - Server listening on port ${PORT}`))
 }
 

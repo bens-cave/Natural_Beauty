@@ -1,5 +1,5 @@
 {
-  "name": "project-3",
+  "name": "natural_beauty_backend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -29,8 +29,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "nodemon index.js",
-    "seed": "node db/seeds.js"
+    "server": "nodemon index.js",
+    "seed": "node db/seeds.js",
+    "client": "yarn start --prefix client",
+    "clientinstall": "yarn --prefix client",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "render-postbuild": "yarn --prefix client && yarn build --prefix client"
   },
   "eslintConfig": {
     "extends": [
