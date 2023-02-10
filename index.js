@@ -9,7 +9,7 @@ mongoose.set('strictQuery', false)
 
 
 const MONGODB_CONN_STRING = process.env.MONGODB_CONNECTION_STRING
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5001
 
 // import { getSinglePark, showParks } from './controllers/parks.js'
 
