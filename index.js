@@ -2,6 +2,7 @@ import dotenv from "dotenv"
 dotenv.config()
 import express from 'express'
 import mongoose from 'mongoose'
+mongoose.set("strictQuery", true)
 
 // Import environment
 // import { PORT, MONGODB_CONNECTION_STRING } from './config/environment.js'
