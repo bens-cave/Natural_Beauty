@@ -28,7 +28,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build": "react-scripts build",
     "server": "nodemon index.js",
     "seed": "node db/seeds.js",
     "client": "yarn start --prefix client",
