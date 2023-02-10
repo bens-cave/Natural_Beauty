@@ -33,8 +33,8 @@
     "seed": "node db/seeds.js",
     "client": "yarn start --prefix client",
     "clientinstall": "yarn --prefix client",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
-    "render-postbuild": "NPM_CONFIG_PRODUCTION=false yarn --prefix client && yarn build --prefix client"
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "render-postbuild": "yarn --prefix client && yarn build --prefix client"
   },
   "eslintConfig": {
     "extends": [
