@@ -28,13 +28,13 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build": "yarn build",
+    "build": "react-scripts build",
     "server": "nodemon index.js",
     "seed": "node db/seeds.js",
     "client": "yarn start --prefix client",
     "clientinstall": "yarn --prefix client",
     "dev": "concurrently \"yarn run server\" \"yarn run client\"",
-    "render-postbuild": "yarn --prefix client && yarn build --prefix client"
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false yarn --prefix client && yarn build --prefix client"
   },
   "eslintConfig": {
     "extends": [
