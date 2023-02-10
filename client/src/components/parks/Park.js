@@ -65,7 +65,7 @@ const NationalPark = () => {
   useEffect(() => {
     const getPark = async () => {
       try {
-        const { data } = await axios.get(`/api/parks/${id}`)
+        const { data } = await axios.get(`https://nb-be.onrender.com/api/parks/${id}`)
         console.log('data.name --> ', data.name)
         setPark(data)
         console.log('park data->', data)
@@ -85,7 +85,7 @@ const NationalPark = () => {
   useEffect(() => {
     const getProfileFav = async () => {
       try {
-        const { data } = await axios.get('/api/profile', {
+        const { data } = await axios.get('https://nb-be.onrender.com/api/profile', {
           headers: {
             Authorization: `Bearer ${getTokenFromLocalStorage()}`,
           },
@@ -108,7 +108,7 @@ const NationalPark = () => {
     console.log('Add to fav')
     try {
       // Post request to /profile endpoint params ID
-      const { data } = await axios.post(`/api/parks/${id}`, null, {
+      const { data } = await axios.post(`https://nb-be.onrender.com/api/parks/${id}`, null, {
         headers: {
           Authorization: `Bearer ${getTokenFromLocalStorage()}`,
         },
@@ -148,7 +148,7 @@ const NationalPark = () => {
   const handleReviewSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post(`/api/parks/${id}/reviews`, submitData, {
+      const { data } = await axios.post(`https://nb-be.onrender.com/api/parks/${id}/reviews`, submitData, {
         headers: {
           Authorization: `Bearer ${getTokenFromLocalStorage()}`,
         },
