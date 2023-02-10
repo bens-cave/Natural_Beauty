@@ -42,7 +42,7 @@ const Register = () => {
     e.preventDefault()
     try {
       // Make post request to /register endpoint
-      await axios.post('https://nb-be.onrender.com/api/register', formData) // formData = request body
+      await axios.post('/api/register', formData) // formData = request body
       // Navigate to login page if successful
       navigate('/login')
     } catch (error) {

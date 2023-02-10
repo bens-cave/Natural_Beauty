@@ -22,7 +22,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const { data } = await axios.get('https://nb-be.onrender.com/api/profile', {
+        const { data } = await axios.get('/api/profile', {
           headers: {
             Authorization: `Bearer ${getTokenFromLocalStorage()}`,
           },

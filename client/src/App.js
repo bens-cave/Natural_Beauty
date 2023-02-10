@@ -16,7 +16,7 @@ import ProfilePage from './ProfilePage'
 const App = () => {
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get('https://nb-be.onrender.com/api/parks/') // * <-- replace with your endpoint
+      const { data } = await axios.get('/api/parks/') // * <-- replace with your endpoint
     }
     getData()
   })

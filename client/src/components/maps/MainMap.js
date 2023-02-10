@@ -32,7 +32,7 @@ const MainMap = () => {
   useEffect(() => {
     const getPark = async () => {
       try {
-        const { data } = await axios.get(`https://nb-be.onrender.com/api/parks`)
+        const { data } = await axios.get(`/api/parks`)
         console.log('🏆 Got all Park data')
         setParks(data)
       } catch (error) {
