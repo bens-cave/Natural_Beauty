@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
+import cors from 'cors'
 import mongoose from 'mongoose'
 mongoose.set('strictQuery', false)
 
@@ -31,6 +32,7 @@ const startServer = async () => {
 
   const app = express()
 
+  app.use(cors())
   app.use(logger)
   app.use(express.json())
 
