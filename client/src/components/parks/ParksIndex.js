@@ -52,7 +52,7 @@ const ParksIndex = () => {
 
     const getParks = async () => {
       try {
-        const { data } = await axios.get('/api/parks')
+        const { data } = await axios.get('https://nb-be.onrender.com/api/parks')
         console.log('🏆 Got the ParksIndex data')
 
         setParks(data)
